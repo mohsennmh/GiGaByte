@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiGaByte</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #010101;
+        }
+
+        h1, h2, h3, p {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Announcement Bar */
+        #announcementBar {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        .announcement-bar__scrolling-list {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        .announcement-bar__item {
+            margin-right: 50px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .text-xs {
+            font-size: 0.8em;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 45px; 
+            z-index: 10;
+            background-color: #f56425;
+            padding: 10px 20px;
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header__logo img {
+            width: 60px;
+            height: 63px;
+        }
+
+        .header__nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .header__nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+            background-color: #d13a08;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .header__nav li {
+            position: relative;
+        }
+
+        .header__nav a {
+            display: block;
+            color: #fff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header__nav a:hover {
+            background-color: #f56425;
+            color: #fff;
+        }
+
+        .header__nav a.active {
+            background-color: #f56425;
+            color: #fff;
+        }
+
+        .header__secondary-nav {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .header__icon {
+            margin-left: 15px;
+        }
+        
+
+        .header__icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Sidebar Filter */
+        aside {
+            background-color: #010101;
+            color: white;
+            padding: 30px;
+            width: 300px;
+            position: fixed;
+            top: 100px; 
+            left: 0;
+            height: calc(100% - 100px);
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        aside.open {
+            transform: translateX(0);
+        }
+
+        aside h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #f56425;
+            padding-bottom: 10px;
+        }
+
+        aside label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        aside input[type="range"] {
+            width: 100%;
+            margin-bottom: 20px;
+            background: #333;
+        }
+
+        #priceValue {
+            font-size: 1.2em;
+            color: #f56425;
+            margin-bottom: 20px;
+        }
+
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        aside ul li {
+            margin-bottom: 10px;
+        }
+
+        aside ul li a {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        aside ul li a:hover {
+            color: #f56425;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 330px; 
+            padding: 40px;
+            background-color: #f7f7f7;
+            margin-top: 150px;
+        }
+
+        .productGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .productItem {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .productItem:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .productItem h3 {
+            color: #d13a08;
+            margin: 15px 0;
+        }
+
+        .productPrice {
+            color: #f56425;
+            font-size: 1.4em;
+            margin: 10px 0;
+        }
+
+        .productDescription {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .addToCartButton {
+            background-color: #f56425;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .addToCartButton:hover {
+            background-color: #d13a08;
+        }
+
+        /* Sidebar Toggle Button */
+        .sidebar-toggle {
+            position: fixed;
+            top: 50px; 
+            left: 10px;
+            background-color: #f56425;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-toggle:hover {
+            background-color: #d13a08;
+        }
+        /* Footer Styles */
+.footer {
+  background-color: #010101; 
+  color: #fff; 
+  padding: 40px 0;
+}
+
+.footer__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.footer__block {
+  flex: 1;
+  min-width: 200px;
+  max-width: 33%;
+}
+
+.footer__block p.bold {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.footer__block--newsletter .form-control {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__block--newsletter .input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d13a08; 
+  border-radius: 5px;
+  color: #010101; 
+}
+
+.footer__block--newsletter .circle-chevron {
+  background-color: #f56425; 
+  color: #fff; 
+  border-radius: 50%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.footer__block--newsletter .circle-chevron:hover {
+  background-color: #d13a08; 
+}
+
+.footer__block--menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__block--menu li {
+  margin-bottom: 10px;
+}
+
+.footer__block--menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer__block--menu a:hover {
+  color: #f56425; 
+}
+
+.footer__block--text .prose {
+  color: #d3d3d3; 
+}
+
+.footer__block--reviews .review {
+  margin-bottom: 20px;
+}
+
+.footer__block--reviews .review__name {
+  font-weight: bold;
+}
+
+.footer__block--reviews .review__rating {
+  font-size: 1.2rem;
+  color: #f56425;
+}
+
+.footer__block--reviews .review__text {
+  margin-top: 5px;
+  color: #d3d3d3; 
+}
+
+.footer__aside {
+  margin-top: 20px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.footer__aside-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.footer__aside-top .social-media {
+  display: flex;
+  gap: 15px;
+}
+
+.footer__aside-top .social-media a {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.footer__aside-top .social-media a:hover {
+  color: #f56425; 
+}
+
+.footer__aside-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+.footer__aside-bottom .footer__copyright {
+    font-size: 0.9rem;
+    color: #d3d3d3; 
+}
+
+.footer__copyright {
+  font-size: 0.8rem;
+  color: #d3d3d3; 
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div id="announcementBar">
+      <div class="announcement-bar__scrolling-list">
+          
+          <span class="announcement-bar__item">
+              <p class="bold text-xs">Everyday Offers! <span class="shape-circle shape--sm"></span> Up to 50% OFF</p>
+          </span>
+          <span class="announcement-bar__item">
+              <p class="bold text-xs">Huge Discounts! <span class="shape-circle shape--sm"></span> Shop Now</p>
+          </span>
+          
+          <span class="announcement-bar__item">
+              <p class="bold text-xs">Everyday Offers! <span class="shape-circle shape--sm"></span> Up to 50% OFF</p>
+          </span>
+          <span class="announcement-bar__item">
+              <p class="bold text-xs">Huge Discounts! <span class="shape-circle shape--sm"></span> Shop Now</p>
+          </span>
+          <span class="announcement-bar__item">
+            <p class="bold text-xs">Everyday Offers! <span class="shape-circle shape--sm"></span> Up to 50% OFF</p>
+        </span>
+        <span class="announcement-bar__item">
+            <p class="bold text-xs">Huge Discounts! <span class="shape-circle shape--sm"></span> Shop Now</p>
+        </span>
+        
+        <span class="announcement-bar__item">
+            <p class="bold text-xs">Everyday Offers! <span class="shape-circle shape--sm"></span> Up to 50% OFF</p>
+        </span>
+        <span class="announcement-bar__item">
+            <p class="bold text-xs">Huge Discounts! <span class="shape-circle shape--sm"></span> Shop Now</p>
+        </span>
+          
+      </div>
+  </div>
+  
+
+    <!-- Header -->
+    <header>
+        <div class="header__logo">
+            <a href=""><img src="GiGaByte.png" alt="Logo"></a>
+        </div>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/collections/apple-iphones">Apple iphones/iPads</a></li>
+                <li><a href="/collections/laptops">Laptops</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="header__secondary-nav">
+            <div class="header__icon">
+                <a href="/cart">
+                    <!-- Add your SVG icon or image here -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l1 7h12l1-7h2" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 10h12l1 11H5l1-11z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="header__icon">
+                <a href="/account">
+                    <!-- Add your SVG icon or image here -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" aria-label="Toggle Sidebar">
+        ☰
+    </button>
+
+    <!-- Sidebar Filter -->
+    <aside id="sidebar">
+        <h2>Filter by Price</h2>
+        <label for="priceRangeMin">Min Price:</label>
+        <input type="range" id="priceRangeMin" min="500" max="3000" step="100" value="500">
+        <label for="priceRangeMax">Max Price:</label>
+        <input type="range" id="priceRangeMax" min="500" max="3000" step="100" value="3000">
+        <div id="priceValue">$500 - $3000</div>
+
+        <h2>Product Categories</h2>
+        <ul>
+            <li><a href="#">Laptops</a></li>
+            <li><a href="#">Gaming Laptops</a></li>
+            <li><a href="#">Accessories</a></li>
+            <li><a href="#">Bundles</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Product Section -->
+    <main>
+        <h1>All Products</h1>
+        <div class="productGrid" id="productGrid">
+            <div class="productItem" data-price="1200">
+                <a href="product1.html">
+                    <img src="laptop1.jpg" alt="Laptop 1">
+                    <h3>HP Spectre x360</h3>
+                    <p class="productPrice">$1200</p>
+                    <p class="productDescription">Sleek and versatile laptop with a 2-in-1 design.</p>
+                </a>
+                <button class="addToCartButton">Add to Cart</button>
+            </div>
+            <div class="productItem" data-price="2400">
+                <a href="product2.html">
+                    <img src="laptop2.jpg" alt="Laptop 2">
+                    <h3>MacBook Pro 16</h3>
+                    <p class="productPrice">$2400</p>
+                    <p class="productDescription">High-performance laptop with powerful specs.</p>
+                </a>
+                <button class="addToCartButton">Add to Cart</button>
+            </div>
+            <div class="productItem" data-price="1300">
+                <a href="product3.html">
+                    <img src="laptop3.jpg" alt="Laptop 3">
+                    <h3>Lenovo ThinkPad X1</h3>
+                    <p class="productPrice">$1300</p>
+                    <p class="productDescription">Durable business laptop with excellent keyboard.</p>
+                </a>
+                <button class="addToCartButton">Add to Cart</button>
+            </div>
+            <div class="productItem" data-price="1500">
+                <a href="product4.html">
+                    <img src="laptop4.jpg" alt="Laptop 4">
+                    <h3>ASUS ROG Zephyrus G14</h3>
+                    <p class="productPrice">$1500</p>
+                    <p class="productDescription">Compact gaming laptop with powerful GPU.</p>
+                </a>
+                <button class="addToCartButton">Add to Cart</button>
+            </div>
+            
+
+        </div>
+    </main>
+    <footer id="footer" class="footer">
+        <div class="container">
+          <div class="footer__wrapper">
+            <!-- Newsletter Signup -->
+            <div class="footer__block footer__block--newsletter">
+              <div class="v-stack gap-6">
+                <p class="h3">Join our Newsletter</p>
+                <div class="prose text-subdued">
+                  <p>Stay updated with the latest tech, gadgets, and exclusive offers!</p>
+                </div>
+                <form method="post" action="#" id="footer-newsletter" accept-charset="UTF-8" class="footer__newsletter-form form">
+                  <input type="hidden" name="form_type" value="customer">
+                  <input type="hidden" name="utf8" value="✓">
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <div class="form-control">
+                    <input id="input-newsletter-email" class="input is-floating" type="email" name="contact[email]" placeholder=" " autocomplete="email" required>
+                    <label for="input-newsletter-email" class="floating-label">E-mail</label>
+                    <div class="self-submit-button">
+                      <button type="submit" class="circle-chevron hover:colors">
+                        <span class="sr-only">Subscribe</span>
+                        <svg role="presentation" focusable="false" width="5" height="8" class="icon icon-chevron-right-small reverse-icon" viewBox="0 0 5 8">
+                          <path d="m.75 7 3-3-3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+      
+            <!-- Footer Menu -->
+            <div class="footer__block footer__block--menu">
+              <p class="bold">Footer Menu</p>
+              <ul class="v-stack gap-3" role="list">
+                <li><a href="#" class="inline-block link-faded break-all">Shop All</a></li>
+                <li><a href="#" class="inline-block link-faded break-all">Contact Information</a></li>
+                <li><a href="#" class="inline-block link-faded break-all">Terms of Service</a></li>
+                <li><a href="#" class="inline-block link-faded break-all">Refund Policy</a></li>
+                <li><a href="#" class="inline-block link-faded break-all">Contact Us</a></li>
+              </ul>
+            </div>
+      
+            <!-- About Us -->
+            <div class="footer__block footer__block--text">
+              <p class="bold">About Us</p>
+              <div class="prose text-subdued">
+                <p>We are GiGaByte, your go-to destination for the latest laptops and accessories. Our team is dedicated to helping you find the perfect tech products with a trial warranty. Get in touch with our experts today!</p>
+              </div>
+            </div>
+      
+            <!-- Customer Reviews -->
+            <div class="footer__block footer__block--reviews">
+              <p class="bold">Customer Reviews</p>
+              <div class="review">
+                <p class="review__name">Alex P.</p>
+                <p class="review__rating">★★★★★</p>
+                <p class="review__text">"Amazing selection of laptops! The customer service was top-notch and the trial warranty is a great feature."</p>
+              </div>
+              <div class="review">
+                <p class="review__name">Jordan M.</p>
+                <p class="review__rating">★★★★☆</p>
+                <p class="review__text">"Found exactly what I was looking for. The website is user-friendly, and the delivery was fast."</p>
+              </div>
+              <div class="review">
+                <p class="review__name">Taylor R.</p>
+                <p class="review__rating">★★★★★</p>
+                <p class="review__text">"Fantastic experience from start to finish. Highly recommend to anyone looking for quality tech products."</p>
+              </div>
+            </div>
+          </div>
+      <!-- Footer Aside -->
+      <div class="footer__aside">
+        <div class="footer__aside-top">
+          <div class="social-media">
+          <a href="https://facebook.com" aria-label="Facebook"><svg><!-- Facebook Icon --></svg></a>
+          <a href="https://twitter.com" aria-label="Twitter"><svg><!-- Twitter Icon --></svg></a>
+          <a href="https://instagram.com" aria-label="Instagram"><svg><!-- Instagram Icon --></svg></a>
+          </div>
+        <div class="footer__aside-bottom">
+          <p class="footer__copyright">&copy; 2024 GiGaByte. All rights reserved.</p>
+      </div>
+    </div>
+    </div>
+            <!-- Footer Bottom -->
+            <div class="footer__aside-bottom">
+              <p class="footer__copyright text-sm text-subdued">© 2024, GiGaByte</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+    <script>
+        const priceRangeMin = document.getElementById('priceRangeMin');
+        const priceRangeMax = document.getElementById('priceRangeMax');
+        const priceValue = document.getElementById('priceValue');
+        const productGrid = document.getElementById('productGrid');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+        function updatePriceFilter() {
+            const minPrice = parseInt(priceRangeMin.value);
+            const maxPrice = parseInt(priceRangeMax.value);
+
+            priceValue.textContent = `$${minPrice} - $${maxPrice}`;
+
+            const products = productGrid.getElementsByClassName('productItem');
+
+            for (let i = 0; i < products.length; i++) {
+                const productPrice = parseInt(products[i].getAttribute('data-price'));
+                
+                if (productPrice >= minPrice && productPrice <= maxPrice) {
+                    products[i].style.display = 'block';
+                } else {
+                    products[i].style.display = 'none';
+                }
+            }
+        }
+
+        priceRangeMin.addEventListener('input', updatePriceFilter);
+        priceRangeMax.addEventListener('input', updatePriceFilter);
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
