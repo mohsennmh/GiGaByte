@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signUpStyle.css">
+    <title>Sign Up Page</title>
+</head>
+<body>
+    <div class="leftSide">
+        <h3 class="welcome">Welcome!</h3>
+        <div class="logo">
+        <img src="./logo.jpeg" alt="">
+        </div>
+        <!--replace with login page-->
+        <p>Already a memeber ? <a href="https://www.logIn.com">Log in !</a></p>
+    </div>
+    <div class="rightSide">
+        <h3 class="sign">Sign in</h3>
+        <form id="signUpForm">
+            <div>
+                <label for="name">NAME</label>
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+        
+            <div>
+                <label for="email">EMAIL ADDRESS</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
+        
+            <div>
+                <label for="phone">PHONE NUMBER</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" placeholder="Ex:70-888-888" required>
+            </div>
+        
+            <div>
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+        
+            <div>
+                <label for="confirmPassword">CONFIRM PASSWORD</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+        
+            <div>
+                <button type="submit">Sign Up</button>
+            </div> 
+            </form>
+            
+            <p>Or register with</p>
+            <div id="alt">
+            <a href="https://www.google.com"><button type="button">Google</button></a>
+            <a href="https://www.facebook.com"><button type="button">Facebook</button></a>
+            </div>
+    </div>
+    <script src="./signUpScript.js"></script>
+</body>
+</html>
