@@ -1,0 +1,18 @@
+{
+    "accounts": [
+      {
+        "name": "test1",
+        "email": "test1@gmail.com",
+        "phone": "70-888-888",
+        "password": "ASDFGHJKL1a",
+        "confirmPassword": "ASDFGHJKL1a"
+      },
+      {
+        "name": "test2",
+        "email": "test2@gmail.com",
+        "phone": "70-888-888",
+        "password": "asdfghjkl1A",
+        "confirmPassword": "asdfghjkl1A"
+      }
+    ]
+  }

@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "name": "HP Spectre x360",
+        "price": 1200,
+        "image": "laptop1.jpg",
+        "description": "Sleek and versatile laptop with a 2-in-1 design.",
+        "page": "product1.html"
+    },
+    {
+        "id": 2,
+        "name": "MacBook Pro 16",
+        "price": 2400,
+        "image": "laptop2.jpg",
+        "description": "High-performance laptop with powerful specs.",
+        "page": "product2.html"
+    },
+    {
+        "id": 3,
+        "name": "Lenovo ThinkPad X1",
+        "price": 1300,
+        "image": "laptop3.jpg",
+        "description": "Durable business laptop with excellent keyboard.",
+        "page": "product3.html"
+    },
+    {
+        "id": 4,
+        "name": "ASUS ROG Zephyrus G14",
+        "price": 1500,
+        "image": "laptop4.jpg",
+        "description": "Compact gaming laptop with powerful GPU.",
+        "page": "product4.html"
+    },
+    {
+        "id": 5,
+        "name": "Gigabyte Aero 15",
+        "price": 1299,
+        "image": "laptop5.jpg",
+        "description": "High-performance laptop with Intel Core i7, 16GB RAM, and 1TB SSD.",
+        "page": "product5.html"
+    },
+    {
+        "id": 6,
+        "name": "Dell XPS 13",
+        "price": 1099,
+        "image": "laptop6.jpg",
+        "description": "A sleek and portable laptop with Intel Core i5, 8GB RAM, and 512GB SSD.",
+        "page": "product6.html"
+    },
+    {
+        "id": 7,
+        "name": "Apple MacBook Pro 16-inch",
+        "price": 2399,
+        "image": "laptop7.jpg",
+        "description": "High-end laptop with Apple M1 Pro chip, 16GB RAM, and 512GB SSD.",
+        "page": "product7.html"
+    },
+    {
+        "id": 8,
+        "name": "Asus ROG Zephyrus G14",
+        "price": 1799,
+        "image": "laptop8.jpg",
+        "description": "A powerful gaming laptop with AMD Ryzen 9, 32GB RAM, and 1TB SSD.",
+        "page": "product8.html"
+    },
+    {
+        "id": 9,
+        "name": "Microsoft Surface Laptop 4",
+        "price": 1199,
+        "image": "laptop9.jpg",
+        "description": "A versatile laptop with Intel Core i5, 8GB RAM, and 256GB SSD.",
+        "page": "product9.html"
+    },
+    {
+        "id": 10,
+        "name": "Toshiba Portege X30",
+        "price": 1199,
+        "image": "laptop10.jpg",
+        "description": "A lightweight business laptop with Intel Core i7, 16GB RAM, and 512GB SSD.",
+        "page": "product10.html"
+    },
+    {
+        "id": 11,
+        "name": "Huawei MateBook X Pro",
+        "price": 1499,
+        "image": "laptop11.jpg",
+        "description": "A premium laptop with Intel Core i7, 16GB RAM, and 1TB SSD.",
+        "page": "product11.html"
+    },
+    {
+        "id": 12,
+        "name": "Apple MacBook Pro 16-inch (2023)",
+        "price": 2399,
+        "image": "laptop12.jpg",
+        "description": "High-end laptop with Apple M1 Pro chip, 16GB RAM, and 512GB SSD.",
+        "page": "product12.html"
+    },
+    {
+        "id": 13,
+        "name": "MateBook",
+        "price": 1499,
+        "image": "laptop13.jpg",
+        "description": "A premium laptop with Intel Core i7, 16GB RAM, and 1TB SSD.",
+        "page": "product13.html"
+    }
+]
