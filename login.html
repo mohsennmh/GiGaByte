@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+     <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+    <div class="left-side">
+        <br><br><div class="welcome"><b>welcome!</b></div>
+        <div class="logo">
+            <img src="GiGaByte1.png" alt="">
+        </div>
+    </div>
+    <div class="main">
+    <h1>login</h1>
+    <br>
+    <p> don't have an account? <b><a href="signUp.html">  Create account  </a> </b> </p>
+    
+
+    <form id="loginappform" action="">
+        <div id="email">
+            <label for="email" id="address"> EMAIL ADDRESS: </label>
+            <input type="email"  class="email" name="email"
+            title="please enter a valid e_mail adress" placeholder="Email Address" required>
+        </div> 
+        
+        <div class="password">
+            <label for="password" id="pass">PASSWORD :</label>
+            <input type="password"   class="password" name="password" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$&]).{8,}"
+             title="password must be contain at least one number,one letter,one special character(@,#,$,&)
+              and be at least 8 characters long" placeholder=" write a complex pass" minlength="8" required>
+        </div><br> 
+            
+        <br><br>
+       
+         
+        <div class="sub-btn">
+            <input type="submit" class="submit" 
+             name="submit" id="submit" value="Log in now">
+        </div> <br>
+       <div class="choice2"> <h4>Or register with:</h4> 
+     <button class="google-button" onclick="redirectToGoogle()">Google </button></div>
+
+        
+    </form>
+
+    </div>
+    </div>
+       <script src="login.js"></script>
+</body>
+
+
+</html>
