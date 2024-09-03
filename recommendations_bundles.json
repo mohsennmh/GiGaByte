@@ -1,0 +1,51 @@
+{
+  "recommendations": [
+    {
+      "id": 1,
+      "name": "HP Spectre x360",
+      "price": 1499.99,
+      "rating": 4.7,
+      "description": "Lightweight, Intel Core i7, 16GB RAM, 512GB SSD. Ideal for business professionals.",
+      "image": "laptop1.jpg",
+      "page": "hp-spectre-x360.html"
+    },
+    {
+      "id": 2,
+      "name": "Dell XPS 13",
+      "price": 1299.99,
+      "rating": 4.5,
+      "description": "Sleek and powerful, featuring Intel Core i7, 16GB RAM, and 512GB SSD. Perfect for on-the-go productivity.",
+      "image": "laptop2.jpg",
+      "page": "dell-xps-13.html"
+    }
+  ],
+  "bundles": [
+    {
+      "id": 3,
+      "name": "HP Spectre x360",
+      "price": 1199.99,
+      "oldPrice": 1499.99,
+      "image": "laptop1.jpg",
+      "page": "hp-spectre-x360.html",
+      "offerBadge": "20% Off"
+    },
+    {
+      "id": 4,
+      "name": "Dell XPS",
+      "price": 1104.99,
+      "oldPrice": 1299.99,
+      "image": "laptop2.jpg",
+      "page": "dell-xps-13.html",
+      "offerBadge": "15% Off"
+    },
+    {
+      "id": 5,
+      "name": "Lenovo ThinkPad X1",
+      "price": 1170.00,
+      "oldPrice": 1300.00,
+      "image": "laptop3.jpg",
+      "page": "lenovo-thinkpad-x1.html",
+      "offerBadge": "10% Off"
+    }
+  ]
+}
